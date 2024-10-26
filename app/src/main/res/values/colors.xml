@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#CB6040</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="colorPrimary">#1B72D9</color>
+    <color name="colorPrimaryDark">#003366</color>
+    <color name="colorBackground">#FFFFFF</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorHeaderBackground">#006280</color>
+    <color name="colorHeaderText">#EDF332</color>
+    <color name="colorFooterBackground">#014855</color>
+    <color name="colorFooterText">#619796</color>
+    <color name="colorBannerButton">#664952</color>
+    <color name="colorGroupBackground">#FFD455</color>
+    <color name="colorGroupText">#FF0000</color>
+    <color name="colorButton">#81D725</color>
+    <color name="colorButtonText">#42C4FE</color>
+    <color name="colorButtonDark">#81D725</color>
+    <color name="colorText">#3CA0D3</color>
+    <!--    màu sử dụng nhiều -->
+    <color name="color">#008577</color>
+</resources>
