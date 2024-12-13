@@ -28,7 +28,7 @@ public class LoadingActivity extends AppCompatActivity {
             @Override
             public void run() {
                 // Sau khoảng thời gian này, chuyển sang màn hình đăng ký
-                Intent intent = new Intent(LoadingActivity.this, RegistrationActivity.class);
+                Intent intent = new Intent(LoadingActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
                 // Đóng LoadingActivity
