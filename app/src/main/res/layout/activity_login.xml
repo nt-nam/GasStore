@@ -53,7 +53,7 @@
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Đăng Nhập"
+            android:text="Đăng nhập"
             android:backgroundTint="@color/white"
             android:textColor="#3B84F1"
             android:padding="16dp"
@@ -123,11 +123,11 @@
                 android:layout_height="64dp"
                 android:layout_margin="16dp"
                 android:src="@drawable/google_logo"/>
-            <ImageView
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_margin="16dp"
-                android:src="@drawable/twitter"/>
+<!--            <ImageView-->
+<!--                android:layout_width="64dp"-->
+<!--                android:layout_height="64dp"-->
+<!--                android:layout_margin="16dp"-->
+<!--                android:src="@drawable/twitter"/>-->
 
         </LinearLayout>
 
