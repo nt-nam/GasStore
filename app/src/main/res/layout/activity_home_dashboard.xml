@@ -46,6 +46,7 @@
         android:layout_height="76dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="22dp"
+        android:background="@drawable/border"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView">
 
@@ -53,6 +54,8 @@
             android:id="@+id/imageView31"
             android:layout_width="79dp"
             android:layout_height="76dp"
+            android:background="@drawable/border"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -64,6 +67,7 @@
             android:layout_height="wrap_content"
             android:text="Tài khoản"
             app:layout_constraintBottom_toBottomOf="@+id/imageView31"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView31"
             app:layout_constraintTop_toTopOf="@+id/imageView31" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -73,6 +77,9 @@
         android:layout_width="160dp"
         android:layout_height="76dp"
         android:layout_marginEnd="20dp"
+
+        android:background="@drawable/border"
+
         app:layout_constraintBottom_toBottomOf="@+id/constraintLayoutTaiKhoan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/constraintLayoutTaiKhoan">
@@ -81,6 +88,7 @@
             android:id="@+id/imageView4"
             android:layout_width="79dp"
             android:layout_height="76dp"
+            android:background="@drawable/border"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -92,6 +100,7 @@
             android:layout_height="wrap_content"
             android:text="Sản phẩm"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView4"
             app:layout_constraintTop_toTopOf="@+id/imageView4" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -100,6 +109,8 @@
         android:id="@+id/constraintLayoutDonHang"
         android:layout_width="160dp"
         android:layout_height="76dp"
+        android:background="@drawable/border"
+
         app:layout_constraintBottom_toBottomOf="@+id/constraintLayoutTinTuc"
         app:layout_constraintEnd_toEndOf="@+id/constraintLayoutSanPham"
         app:layout_constraintStart_toStartOf="@+id/constraintLayoutSanPham"
@@ -109,6 +120,7 @@
             android:id="@+id/imageView32"
             android:layout_width="79dp"
             android:layout_height="76dp"
+            android:background="@drawable/border"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -120,6 +132,7 @@
             android:layout_height="wrap_content"
             android:text="Đơn Hàng"
             app:layout_constraintBottom_toBottomOf="@+id/imageView32"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView32"
             app:layout_constraintTop_toTopOf="@+id/imageView32" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -129,6 +142,7 @@
         android:layout_width="160dp"
         android:layout_height="76dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/border"
         app:layout_constraintEnd_toEndOf="@+id/constraintLayoutTaiKhoan"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/constraintLayoutTaiKhoan"
@@ -138,6 +152,7 @@
             android:id="@+id/imageView3"
             android:layout_width="79dp"
             android:layout_height="76dp"
+            android:background="@drawable/border"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -149,6 +164,7 @@
             android:layout_height="wrap_content"
             android:text="Tin tức"
             app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView3"
             app:layout_constraintTop_toTopOf="@+id/imageView3" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -157,16 +173,19 @@
         android:id="@+id/constraintLayoutThongKe"
         android:layout_width="160dp"
         android:layout_height="76dp"
+        android:background="@drawable/border"
+
         app:layout_constraintBottom_toBottomOf="@+id/constraintLayoutDanhGia"
-        app:layout_constraintEnd_toEndOf="@+id/constraintLayoutDonHang"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayoutSanPham"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/constraintLayoutDonHang"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayoutSanPham"
         app:layout_constraintTop_toTopOf="@+id/constraintLayoutDanhGia">
 
         <ImageView
             android:id="@+id/imageView41"
             android:layout_width="79dp"
             android:layout_height="76dp"
+            android:background="@drawable/border"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -178,6 +197,7 @@
             android:layout_height="wrap_content"
             android:text="Thống  kê"
             app:layout_constraintBottom_toBottomOf="@+id/imageView41"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView41"
             app:layout_constraintTop_toTopOf="@+id/imageView41" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -186,15 +206,18 @@
         android:id="@+id/constraintLayoutPhanHoi"
         android:layout_width="160dp"
         android:layout_height="76dp"
-        android:layout_marginTop="22dp"
-        app:layout_constraintEnd_toEndOf="@+id/constraintLayoutThongKe"
-        app:layout_constraintStart_toStartOf="@+id/constraintLayoutThongKe"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayoutThongKe">
+        android:background="@drawable/border"
+
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayoutBanDo"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayoutSanPham"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayoutSanPham"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayoutBanDo">
 
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="79dp"
             android:layout_height="76dp"
+            android:background="@drawable/border"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -206,6 +229,7 @@
             android:layout_height="wrap_content"
             android:text="Phản hồi"
             app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView5"
             app:layout_constraintTop_toTopOf="@+id/imageView5" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -215,15 +239,19 @@
         android:layout_width="160dp"
         android:layout_height="76dp"
         android:layout_marginTop="22dp"
-        app:layout_constraintEnd_toEndOf="@+id/constraintLayoutTinTuc"
+        android:background="@drawable/border"
+
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayoutTaiKhoan"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayoutTaiKhoan"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayoutTinTuc">
 
         <ImageView
             android:id="@+id/imageView6"
             android:layout_width="79dp"
             android:layout_height="76dp"
+            android:background="@drawable/border"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -235,6 +263,7 @@
             android:layout_height="wrap_content"
             android:text="Đánh giá"
             app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView6"
             app:layout_constraintTop_toTopOf="@+id/imageView6" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -244,14 +273,17 @@
         android:layout_width="160dp"
         android:layout_height="76dp"
         android:layout_marginTop="22dp"
-        app:layout_constraintEnd_toEndOf="@+id/constraintLayoutDanhGia"
-        app:layout_constraintStart_toStartOf="@+id/constraintLayoutDanhGia"
+        android:background="@drawable/border"
+
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayoutTaiKhoan"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayoutTaiKhoan"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayoutDanhGia">
 
         <ImageView
             android:id="@+id/imageView7"
             android:layout_width="79dp"
             android:layout_height="76dp"
+            android:background="@drawable/border"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -263,6 +295,7 @@
             android:layout_height="wrap_content"
             android:text="Bản đồ"
             app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView7"
             app:layout_constraintTop_toTopOf="@+id/imageView7" />
     </androidx.constraintlayout.widget.ConstraintLayout>

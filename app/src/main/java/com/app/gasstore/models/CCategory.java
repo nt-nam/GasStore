@@ -1,5 +1,4 @@
 package com.app.gasstore.models;
 
-public class GasTest {
-
+public class CCategory {
 }

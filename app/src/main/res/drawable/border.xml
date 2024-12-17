@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@android:color/transparent" /> <!-- Bên trong viền là trong suốt -->
+    <stroke
+        android:width="2dp"
+        android:color="#FF0000" /> <!-- Định nghĩa độ rộng và màu của viền -->
+    <corners android:radius="50dp" /> <!-- Tùy chọn: Bo góc cho viền -->
+
+</shape>
