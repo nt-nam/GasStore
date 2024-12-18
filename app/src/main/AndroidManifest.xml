@@ -13,8 +13,11 @@
         android:theme="@style/Theme.GasStore"
         tools:targetApi="31">
         <activity
+            android:name=".activities.ProductViewActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.HomeDashboardActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,17 +29,13 @@
             android:exported="false" />
         <activity
             android:name=".activities.LoginActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".activities.RegistrationActivity"
             android:exported="false" />
         <activity
             android:name=".activities.LoadingActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".activities.HomeActivity"
             android:exported="false" />
