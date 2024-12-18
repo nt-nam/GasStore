@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <color name="black">#FF000000</color>
+
     <color name="orange">#CB6040</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#F75564</color>
@@ -8,7 +11,7 @@
     <color name="grey_light">#ADABAB</color>
     <color name="yellow">#FFEFDE</color>
 
-
+    
     <color name="colorPrimary">#1B72D9</color>
     <color name="colorPrimaryDark">#003366</color>
     <color name="colorBackground">#FFFFFF</color>

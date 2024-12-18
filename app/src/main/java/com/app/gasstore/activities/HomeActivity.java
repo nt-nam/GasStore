@@ -43,7 +43,7 @@ public class HomeActivity extends BaseActivity {
     }
 
     private void addEvents() {
-        binding.button.setOnClickListener(new View.OnClickListener() {
+        binding.logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 signout();
