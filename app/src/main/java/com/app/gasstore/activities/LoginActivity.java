@@ -63,7 +63,7 @@ public class LoginActivity extends BaseActivity {
                 Toast.makeText(LoginActivity.this, "Vui lòng nhập thông tin đăng nhập", Toast.LENGTH_SHORT).show();
             }
         });
-        binding.tvSignUp.setOnClickListener(view -> startActivity(new Intent(LoginActivity.this,HomeActivity.class)));
+        binding.tvSignUp.setOnClickListener(view -> startActivity(new Intent(LoginActivity.this, RegistrationActivity.class)));
     }
     private void firebaseAuthWithGoogle(String idToken) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
