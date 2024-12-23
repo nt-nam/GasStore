@@ -1,35 +1,68 @@
 package com.app.gasstore.activities;
 
 import android.os.Bundle;
+import android.view.WindowManager;
 
 import androidx.activity.EdgeToEdge;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.app.gasstore.utils.ManagmentProduct;
 
 import com.app.gasstore.R;
+import com.app.gasstore.databinding.ActivityProductAddBinding;
+import com.app.gasstore.databinding.ActivityProductViewBinding;
+import com.app.gasstore.models.Products;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class ProductAddActivity extends BaseActivity {
-    ManagmentProduct managmentProduct;
-
+    DatabaseReference database ;
+    ActivityProductAddBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_product_add);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-        managmentProduct = new ManagmentProduct(this);
+        binding = ActivityProductAddBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         init();
+        addEvent();
+    }
+
+
+
+    private void addEvent() {
+        binding.btnSaveProduct.setOnClickListener(v -> {
+            String name = binding.edtProductName.getText().toString();
+            String price = binding.etProductPrice.getText().toString();
+            String quantity = binding.etProductQuantity.getText().toString();
+            String description = binding.etProductDescription.getText().toString();
+            String color = binding.edtProductColor.getText().toString();
+            String mass = binding.edtProductMass.getText().toString();
+            String origin = binding.edtProductOrigin.getText().toString();
+            Products p = new Products("defauft",
+                    false,
+                    name,
+                    name,
+                    Double.parseDouble(price),
+                    "defauft",
+                    Integer.parseInt(quantity),
+                    description,
+                    color,
+                    "defauft",
+                    mass,
+                    origin,
+                    "defauft",
+                    "defauft",
+                    0,
+                    0,
+                    0);
+        });
     }
 
     private void init() {
-
+        database = FirebaseDatabase.getInstance().getReference();
     }
 
 //    private void sendOrderToFirebase() {

@@ -35,7 +35,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/et_product_name"
+            android:id="@+id/edtProductName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter product name"
@@ -131,7 +131,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/et_product_color"
+            android:id="@+id/edtProductColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter color"
@@ -145,7 +145,7 @@
         android:orientation="horizontal">
         <!-- Mass -->
         <TextView
-            android:id="@+id/tv_product_mass"
+            android:id="@+id/tvProductMass"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="12dp"
@@ -155,7 +155,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/et_product_mass"
+            android:id="@+id/edtProductMass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter mass"
@@ -169,7 +169,7 @@
         android:orientation="horizontal">
         <!-- Origin -->
         <TextView
-            android:id="@+id/tv_product_origin"
+            android:id="@+id/tvProductOrigin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="12dp"
@@ -179,7 +179,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/et_product_origin"
+            android:id="@+id/edtProductOrigin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter origin"
@@ -193,11 +193,13 @@
 
     <!-- Save Button -->
     <Button
-        android:id="@+id/btn_save_product"
+        android:id="@+id/btnSaveProduct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Lưu sản phẩm"
-        android:textStyle="bold" />
+        android:textColor="@color/red"
+        android:textStyle="bold"
+        android:background="@drawable/border"/>
 
 </LinearLayout>

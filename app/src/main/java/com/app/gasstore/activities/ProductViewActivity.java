@@ -1,7 +1,9 @@
 package com.app.gasstore.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,19 +23,52 @@ import java.util.ArrayList;
 
 public class ProductViewActivity extends BaseActivity {
     ActivityProductViewBinding binding;
-    private  RecyclerView.Adapter adapterListProduct;
+    private RecyclerView.Adapter adapterListProduct;
     private int categoryId;
     private String categoryName;
     private String searchText;
     private boolean isSearch;
+    int optionsShow;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivityProductViewBinding.inflate(getLayoutInflater());
+        binding = ActivityProductViewBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getIntentExtra();
+        addControls();
         initList();
+        addEvents();
+    }
+
+    private void addControls() {
+        if (optionsShow == -1) {
+            // Ẩn TextView
+//            binding.textView14.setVisibility(View.GONE);
+            // Hiện TextView
+            binding.textView14.setVisibility(View.VISIBLE);
+            // Ẩn nhưng vẫn giữ không gian
+//            binding.textView14.setVisibility(View.INVISIBLE);
+        }
+
+    }
+
+    private void addEvents() {
+        binding.backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        binding.textView14.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProductViewActivity.this, ProductAddActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void initList() {
@@ -58,7 +93,9 @@ public class ProductViewActivity extends BaseActivity {
                         list.add(issue.getValue(Products.class));
                     }
                     if (list.size() > 0) {
-                        binding.foodList.setLayoutManager(new GridLayoutManager(ProductViewActivity.this, 2));
+                        binding.foodList.setLayoutManager(new GridLayoutManager(ProductViewActivity.this, 3, RecyclerView.VERTICAL, false));
+//                        binding.foodList.setLayoutManager(new GridLayoutManager(ProductViewActivity.this, 1));
+
                         adapterListProduct = new ProductListAdapter(list);
                         binding.foodList.setAdapter(adapterListProduct);
                     }
@@ -78,10 +115,11 @@ public class ProductViewActivity extends BaseActivity {
     }
 
     private void getIntentExtra() {
-        categoryId=getIntent().getIntExtra("categoryId",0);
-        categoryName=getIntent().getStringExtra("categoryName");
-        searchText=getIntent().getStringExtra("searchText");
-        isSearch=getIntent().getBooleanExtra("isSearch",false);
+        categoryId = getIntent().getIntExtra("categoryId", 0);
+        optionsShow = getIntent().getIntExtra("optionsShow", 0);
+        categoryName = getIntent().getStringExtra("categoryName");
+        searchText = getIntent().getStringExtra("searchText");
+        isSearch = getIntent().getBooleanExtra("isSearch", false);
 
     }
 }

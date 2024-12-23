@@ -3,6 +3,7 @@ package com.app.gasstore.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -13,9 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.gasstore.R;
 import com.app.gasstore.adapters.CategoryAdapter;
+import com.app.gasstore.adapters.NewsAdapter;
 import com.app.gasstore.adapters.ProductListAdapter;
 import com.app.gasstore.databinding.ActivityHomeBinding;
 import com.app.gasstore.models.Category;
+import com.app.gasstore.models.News;
 import com.app.gasstore.models.Products;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -39,7 +42,7 @@ public class HomeActivity extends BaseActivity {
         EdgeToEdge.enable(this);
         binding=ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -47,6 +50,7 @@ public class HomeActivity extends BaseActivity {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         initCategory();
         initProduct();
+        initNews();
         addEvents();
     }
 
@@ -107,24 +111,51 @@ public class HomeActivity extends BaseActivity {
             }
         });
     }
-
-    private void addEvents() {
-        binding.logoutBtn.setOnClickListener(new View.OnClickListener() {
+    private void initNews() {
+        DatabaseReference myRef=database.getReference("News");
+        binding.progressBarBestFood.setVisibility(View.VISIBLE);
+        ArrayList<News> list = new ArrayList<>();
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                signout();
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    for (DataSnapshot issue: snapshot.getChildren()){
+                        list.add(issue.getValue(News.class));
+                    }
+                    if(list.size()>0){
+                        binding.NewsView.setLayoutManager(new LinearLayoutManager(HomeActivity.this,LinearLayoutManager.VERTICAL, false));
+                        RecyclerView.Adapter adapter =new NewsAdapter(list);
+                        binding.NewsView.setAdapter(adapter);
+                    }
+                    binding.progressBarNews.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
+    }
+    private void addEvents() {
+        binding.logoutBtn.setOnClickListener(v -> signout());
         binding.imgVAllProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 viewAllProduct();
             }
         });
+        binding.SettingBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, HomeDashboardActivity.class));
+            }
+        });
     }
 
     private void viewAllProduct() {
         Intent intent = new Intent(this, ProductViewActivity.class);
+        intent.putExtra("optionsShow", 1);
         startActivity(intent);
     }
 

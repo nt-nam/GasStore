@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 public class Products implements Serializable {
     private String id;//mã
+    private boolean BestProduct;//Sản phẩm bán chạy
     private String name;//tên
     private String Title;//tên
     private double Price;//giá
@@ -28,6 +29,14 @@ public class Products implements Serializable {
 
     public double getStar() {
         return Star;
+    }
+
+    public boolean isBestProduct() {
+        return BestProduct;
+    }
+
+    public void setBestProduct(boolean bestProduct) {
+        BestProduct = bestProduct;
     }
 
     public void setStar(double star) {
@@ -151,6 +160,45 @@ public class Products implements Serializable {
     }
 
     public void setQuantitySold(int quantitySold) {
+        this.quantitySold = quantitySold;
+    }
+
+    public Products(String id, String name, String title, double price, String imagePath, int quantity, String description, String color, String size, String mass, String origin, String supplier, String status, double star, int view, int quantitySold) {
+        this.id = id;
+        this.name = name;
+        Title = title;
+        Price = price;
+        ImagePath = imagePath;
+        this.quantity = quantity;
+        this.description = description;
+        this.color = color;
+        this.size = size;
+        this.mass = mass;
+        Origin = origin;
+        this.supplier = supplier;
+        this.status = status;
+        Star = star;
+        this.view = view;
+        this.quantitySold = quantitySold;
+    }
+
+    public Products(String id, boolean bestProduct, String name, String title, double price, String imagePath, int quantity, String description, String color, String size, String mass, String origin, String supplier, String status, double star, int view, int quantitySold) {
+        this.id = id;
+        BestProduct = bestProduct;
+        this.name = name;
+        Title = title;
+        Price = price;
+        ImagePath = imagePath;
+        this.quantity = quantity;
+        this.description = description;
+        this.color = color;
+        this.size = size;
+        this.mass = mass;
+        Origin = origin;
+        this.supplier = supplier;
+        this.status = status;
+        Star = star;
+        this.view = view;
         this.quantitySold = quantitySold;
     }
 
