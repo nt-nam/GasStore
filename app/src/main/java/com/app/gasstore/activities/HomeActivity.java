@@ -115,6 +115,17 @@ public class HomeActivity extends BaseActivity {
                 signout();
             }
         });
+        binding.imgVAllProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewAllProduct();
+            }
+        });
+    }
+
+    private void viewAllProduct() {
+        Intent intent = new Intent(this, ProductViewActivity.class);
+        startActivity(intent);
     }
 
     public void signout() {

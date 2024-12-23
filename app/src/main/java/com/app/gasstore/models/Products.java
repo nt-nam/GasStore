@@ -1,6 +1,9 @@
 package com.app.gasstore.models;
 
-public class Products {
+
+import java.io.Serializable;
+
+public class Products implements Serializable {
     private String id;//mã
     private String name;//tên
     private String Title;//tên

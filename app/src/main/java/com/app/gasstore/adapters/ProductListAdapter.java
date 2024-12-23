@@ -42,7 +42,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         DecimalFormat formatter = new DecimalFormat("#,###");
         holder.titleTxt.setText(items.get(position).getTitle());
         holder.priceTxt.setText("₫"+formatter.format(items.get(position).getPrice()));
-        holder.quantityTxt.setText(items.get(position).getView()+" phút");
+        holder.quantityTxt.setText(items.get(position).getQuantity()+" tồn kho");
         holder.starTxt.setText(""+items.get(position).getStar());
 
         Glide.with(context)
@@ -52,7 +52,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
         holder.itemView.setOnClickListener(view -> {
             Intent intent =new Intent(context, BaseActivity.class);
-            intent.putExtra("object" , (CharSequence) items.get(position));
+            intent.putExtra("object" , items.get(position));
             context.startActivity(intent);
         });
     }

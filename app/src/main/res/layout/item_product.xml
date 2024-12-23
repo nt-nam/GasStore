@@ -3,18 +3,23 @@
              android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
              android:layout_height="match_parent">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/pic"
             android:layout_width="0dp"
             android:layout_height="111dp"
+            android:background="@drawable/none_img"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -52,11 +57,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                app:layout_constraintBottom_toBottomOf="@+id/timeTxt"
-                app:layout_constraintStart_toEndOf="@+id/timeTxt"
-                app:layout_constraintTop_toTopOf="@+id/timeTxt"
-                />
-<!--            app:srcCompat="@drawable/time"-->
+                app:layout_constraintBottom_toBottomOf="@+id/quantityTxt"
+                app:layout_constraintStart_toEndOf="@+id/quantityTxt"
+                app:layout_constraintTop_toTopOf="@+id/quantityTxt" />
+            <!--            app:srcCompat="@drawable/time"-->
             <TextView
                 android:id="@+id/priceTxt"
                 android:layout_width="wrap_content"
@@ -68,8 +72,8 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/timeTxt"
-                app:layout_constraintTop_toBottomOf="@+id/timeTxt"
+                app:layout_constraintStart_toStartOf="@+id/quantityTxt"
+                app:layout_constraintTop_toBottomOf="@+id/quantityTxt"
                 app:layout_constraintVertical_bias="0.0" />
 
             <ImageView

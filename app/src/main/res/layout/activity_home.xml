@@ -271,7 +271,7 @@
                     android:text="Sản phẩm"
                     />
                 <ImageView
-                    android:id="@+id/imgVAllCategory"
+                    android:id="@+id/imgVAllProduct"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"

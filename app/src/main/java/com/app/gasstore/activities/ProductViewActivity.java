@@ -37,7 +37,7 @@ public class ProductViewActivity extends BaseActivity {
     }
 
     private void initList() {
-        DatabaseReference myRef = database.getReference("Product");
+        DatabaseReference myRef = database.getReference("Products");
         binding.progressBar.setVisibility(View.VISIBLE);
         ArrayList<Products> list = new ArrayList<>();
 
@@ -50,7 +50,7 @@ public class ProductViewActivity extends BaseActivity {
             query = myRef.orderByChild("CategoryId").equalTo(categoryId);
         }
 
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
