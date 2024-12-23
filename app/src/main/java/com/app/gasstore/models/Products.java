@@ -1,9 +1,12 @@
 package com.app.gasstore.models;
 
-public class Product {
+public class Products {
     private String id;//mã
     private String name;//tên
-    private double price;//giá
+    private String Title;//tên
+    private double Price;//giá
+    private String ImagePath;
+
     private int quantity;//số lượng
     private String description;//mô tả
     private String color;//màu
@@ -12,10 +15,28 @@ public class Product {
     private String Origin;//xuất xứ
     private String supplier;//nhà cung cấp
     private String status;//trạng thái sản phẩm
+    private double Star;//trạng thái sản phẩm
+
     private int view;//lượt xem
     private int quantitySold;//số lượng đã bán
 
-    public Product() {
+    public Products() {
+    }
+
+    public double getStar() {
+        return Star;
+    }
+
+    public void setStar(double star) {
+        Star = star;
+    }
+
+    public String getTitle() {
+        return Title;
+    }
+
+    public void setTitle(String title) {
+        Title = title;
     }
 
     public String getId() {
@@ -34,12 +55,20 @@ public class Product {
         this.name = name;
     }
 
+    public String getImagePath() {
+        return ImagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        ImagePath = imagePath;
+    }
+
     public double getPrice() {
-        return price;
+        return Price;
     }
 
     public void setPrice(double price) {
-        this.price = price;
+        this.Price = price;
     }
 
     public int getQuantity() {

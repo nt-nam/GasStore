@@ -6,7 +6,7 @@ import java.util.List;
 public class Order {
     private String id;
     private String idUser;
-    private List<Product> products;
+    private List<Products> products;
     private double totalPrice;
     private Date dateCreated;
     private Date dateUpdated;

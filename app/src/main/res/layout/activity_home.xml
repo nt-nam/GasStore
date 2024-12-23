@@ -233,7 +233,7 @@
                 android:layout_height="310dp">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/ProductView"
+                    android:id="@+id/CategoryView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -242,12 +242,12 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ProgressBar
-                    android:id="@+id/progressBarBestFood"
+                    android:id="@+id/progressBarCategory"
                     style="?android:attr/progressBarStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/ProductView"
+                    app:layout_constraintEnd_toEndOf="@+id/CategoryView"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -285,17 +285,17 @@
                 android:layout_height="250dp">
 
                 <ProgressBar
-                    android:id="@+id/progressBarCategory"
+                    android:id="@+id/progressBarBestFood"
                     style="?android:attr/progressBarStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@+id/categoryView"
+                    app:layout_constraintBottom_toBottomOf="@+id/ProductView"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/categoryView" />
+                    app:layout_constraintTop_toTopOf="@+id/ProductView" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/categoryView"
+                    android:id="@+id/ProductView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"

@@ -13,16 +13,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.gasstore.R;
 import com.app.gasstore.activities.BaseActivity;
-import com.app.gasstore.models.Product;
+import com.app.gasstore.models.Products;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.viewholder> {
-    ArrayList<Product> items;
+    ArrayList<Products> items;
     Context context;
 
-    public ProductListAdapter(ArrayList<Product> items) {
+    public ProductListAdapter(ArrayList<Products> items) {
         this.items = items;
     }
 
@@ -37,15 +40,15 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     @Override
     public void onBindViewHolder(@NonNull ProductListAdapter.viewholder holder, int position) {
         DecimalFormat formatter = new DecimalFormat("#,###");
-        holder.titleTxt.setText(items.get(position).getName());
+        holder.titleTxt.setText(items.get(position).getTitle());
         holder.priceTxt.setText("₫"+formatter.format(items.get(position).getPrice()));
-        holder.timeTxt.setText(items.get(position).getView()+" phút");
-        holder.starTxt.setText(""+items.get(position).getId());
+        holder.quantityTxt.setText(items.get(position).getView()+" phút");
+        holder.starTxt.setText(""+items.get(position).getStar());
 
-//        Glide.with(context)
-//                .load(items.get(position).getImagePath())
-//                .transform(new CenterCrop() , new RoundedCorners(30))
-//                .into(holder.pic);
+        Glide.with(context)
+                .load(items.get(position).getImagePath())
+                .transform(new CenterCrop() , new RoundedCorners(30))
+                .into(holder.pic);
 
         holder.itemView.setOnClickListener(view -> {
             Intent intent =new Intent(context, BaseActivity.class);
@@ -60,14 +63,14 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     }
 
     public class viewholder extends RecyclerView.ViewHolder{
-        TextView titleTxt ,priceTxt,timeTxt,starTxt;
+        TextView titleTxt ,priceTxt,quantityTxt,starTxt;
         ImageView pic;
         public viewholder(@NonNull View itemView) {
             super(itemView);
 
             titleTxt=itemView.findViewById(R.id.titleText);
             priceTxt=itemView.findViewById(R.id.priceTxt);
-            timeTxt=itemView.findViewById(R.id.timeTxt);
+            quantityTxt=itemView.findViewById(R.id.quantityTxt);
             starTxt=itemView.findViewById(R.id.rateTxt);
             pic=itemView.findViewById(R.id.pic);
 

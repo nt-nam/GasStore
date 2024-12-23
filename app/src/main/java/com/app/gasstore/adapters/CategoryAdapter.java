@@ -69,6 +69,7 @@ public class CategoryAdapter extends  RecyclerView.Adapter<CategoryAdapter.viewh
                 break;
             }
         }
+
         int drawableRs=context.getResources().getIdentifier(items.get(position).getImagePath()
                 ,"drawable" ,holder.itemView.getContext().getPackageName());
         Glide.with(context)

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.gasstore.adapters.ProductListAdapter;
 import com.app.gasstore.databinding.ActivityProductViewBinding;
-import com.app.gasstore.models.Product;
+import com.app.gasstore.models.Products;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,7 +39,7 @@ public class ProductViewActivity extends BaseActivity {
     private void initList() {
         DatabaseReference myRef = database.getReference("Product");
         binding.progressBar.setVisibility(View.VISIBLE);
-        ArrayList<Product> list = new ArrayList<>();
+        ArrayList<Products> list = new ArrayList<>();
 
         Query query;
         if (isSearch) {
@@ -55,7 +55,7 @@ public class ProductViewActivity extends BaseActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     for (DataSnapshot issue : snapshot.getChildren()) {
-                        list.add(issue.getValue(Product.class));
+                        list.add(issue.getValue(Products.class));
                     }
                     if (list.size() > 0) {
                         binding.foodList.setLayoutManager(new GridLayoutManager(ProductViewActivity.this, 2));

@@ -8,12 +8,15 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.gasstore.R;
 import com.app.gasstore.adapters.CategoryAdapter;
+import com.app.gasstore.adapters.ProductListAdapter;
 import com.app.gasstore.databinding.ActivityHomeBinding;
 import com.app.gasstore.models.Category;
+import com.app.gasstore.models.Products;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -21,6 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -42,6 +46,7 @@ public class HomeActivity extends BaseActivity {
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         initCategory();
+        initProduct();
         addEvents();
     }
 
@@ -58,13 +63,41 @@ public class HomeActivity extends BaseActivity {
                         list.add(issue.getValue(Category.class));
                     }
                     if(list.size()>0){
-                        binding.categoryView.setLayoutManager(
+                        binding.CategoryView.setLayoutManager(
                                 new GridLayoutManager(HomeActivity.this ,4)
                         );
                         RecyclerView.Adapter adapter = new CategoryAdapter(list);
-                        binding.categoryView.setAdapter(adapter);
+                        binding.CategoryView.setAdapter(adapter);
                     }
                     binding.progressBarCategory.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+    private void initProduct() {
+        DatabaseReference myRef=database.getReference("Products");
+        binding.progressBarBestFood.setVisibility(View.VISIBLE);
+        ArrayList<Products> list = new ArrayList<>();
+        Query query = myRef.orderByChild("BestProduct").equalTo(true);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    for (DataSnapshot issue: snapshot.getChildren()){
+                        list.add(issue.getValue(Products.class));
+                    }
+                    if(list.size()>0){
+                        binding.ProductView.setLayoutManager(new LinearLayoutManager(HomeActivity.this,LinearLayoutManager.HORIZONTAL, false));
+                        RecyclerView.Adapter adapter =new ProductListAdapter(list);
+                        binding.ProductView.setAdapter(adapter);
+
+                    }
+                    binding.progressBarBestFood.setVisibility(View.GONE);
                 }
             }
 
