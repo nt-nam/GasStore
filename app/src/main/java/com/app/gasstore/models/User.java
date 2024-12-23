@@ -1,8 +1,8 @@
-﻿package com.app.gasstore.models;
+package com.app.gasstore.models;
 
 import java.util.Date;
 
-public class CUser {
+public class User {
     private String username; //key
     private String fullname;
     private String email;
@@ -17,10 +17,10 @@ public class CUser {
     private Date birthday;
     private int score; // sử dụng khi có tính điểm khách hàng
 
-    public CUser() {
+    public User() {
     }
 
-    public CUser(String username, String fullname, String phone) {
+    public User(String username, String fullname, String phone) {
         this.username = username;
         this.fullname = fullname;
         this.phone = phone;

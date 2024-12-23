@@ -2,11 +2,14 @@ package com.app.gasstore.models;
 
 import java.util.Date;
 
-public class CNews {
+public class Review {
     private String id;
     private String idUser;
-    private String title;
+    private String idOrder;
+    private String idProduct;
     private String content;
+    private double rating;
     private Date dateCreated;
-    private String status;
+    private int like;
+    private int unlike;
 }

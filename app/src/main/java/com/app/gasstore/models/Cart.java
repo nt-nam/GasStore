@@ -1,11 +1,10 @@
 package com.app.gasstore.models;
 
-import java.util.Date;
 import java.util.List;
 
-public class CCart {
+public class Cart {
     private String id;
     private String idUser;
-    private List<CProduct> products;
+    private List<String> idProducts;
 
 }
