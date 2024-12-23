@@ -1,7 +1,9 @@
 package com.app.gasstore.activities;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.core.graphics.Insets;
@@ -33,32 +35,82 @@ public class ProductAddActivity extends BaseActivity {
 
 
     private void addEvent() {
+//        binding.btnSaveProduct.setOnClickListener(v -> {
+//            String name = binding.edtProductName.getText().toString();
+//            String price = binding.etProductPrice.getText().toString();
+//            String quantity = binding.etProductQuantity.getText().toString();
+//            String description = binding.etProductDescription.getText().toString();
+//            String color = binding.edtProductColor.getText().toString();
+//            String mass = binding.edtProductMass.getText().toString();
+//            String origin = binding.edtProductOrigin.getText().toString();
+//            Products p = new Products("defauft",
+//                    false,
+//                    name,
+//                    name,
+//                    Double.parseDouble(price),
+//                    "defauft",
+//                    Integer.parseInt(quantity),
+//                    description,
+//                    color,
+//                    "defauft",
+//                    mass,
+//                    origin,
+//                    "defauft",
+//                    "defauft",
+//                    0,
+//                    0,
+//                    0);
+//            database.child("Products2").push().setValue(p)
+//                    .addOnCompleteListener(task -> {
+//                        if (task.isSuccessful()) {
+//                            Log.d("Firebase", "Data written successfully!");
+//                        } else {
+//                            Log.e("Firebase", "Failed to write data.", task.getException());
+//                        }
+//                    });
+//        });
         binding.btnSaveProduct.setOnClickListener(v -> {
-            String name = binding.edtProductName.getText().toString();
-            String price = binding.etProductPrice.getText().toString();
-            String quantity = binding.etProductQuantity.getText().toString();
-            String description = binding.etProductDescription.getText().toString();
-            String color = binding.edtProductColor.getText().toString();
-            String mass = binding.edtProductMass.getText().toString();
-            String origin = binding.edtProductOrigin.getText().toString();
-            Products p = new Products("defauft",
-                    false,
-                    name,
-                    name,
-                    Double.parseDouble(price),
-                    "defauft",
-                    Integer.parseInt(quantity),
-                    description,
-                    color,
-                    "defauft",
-                    mass,
-                    origin,
-                    "defauft",
-                    "defauft",
-                    0,
-                    0,
-                    0);
+            String name = binding.edtProductName.getText().toString().trim();
+            String price = binding.edtProductPrice.getText().toString().trim();
+            String quantity = binding.etProductQuantity.getText().toString().trim();
+            String description = binding.edtProductDescription.getText().toString().trim();
+            String color = binding.edtProductColor.getText().toString().trim();
+            String mass = binding.edtProductMass.getText().toString().trim();
+            String origin = binding.edtProductOrigin.getText().toString().trim();
+
+            if (name.isEmpty() || price.isEmpty() || quantity.isEmpty() || description.isEmpty() ||
+                    color.isEmpty() || mass.isEmpty() || origin.isEmpty()) {
+                Toast.makeText(this, "Please fill in all fields!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            try {
+                double priceValue = Double.parseDouble(price);
+                int quantityValue = Integer.parseInt(quantity);
+
+                Products p = new Products(
+                        "default", false, name, name, priceValue, "default",
+                        quantityValue, description, color, "default", mass, origin,
+                        "default", "default", 0, 0, 0
+                );
+
+                database.child("Products").push().setValue(p)
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(this, "Product added successfully!", Toast.LENGTH_SHORT).show();
+                                Log.d("Firebase", "Data written successfully!");
+                                finish();
+                            } else {
+                                Toast.makeText(this, "Failed to add product.", Toast.LENGTH_SHORT).show();
+                                Log.e("Firebase", "Failed to write data.", task.getException());
+                            }
+                        });
+
+            } catch (NumberFormatException e) {
+                Toast.makeText(this, "Invalid number format!", Toast.LENGTH_SHORT).show();
+            }
         });
+
     }
 
     private void init() {

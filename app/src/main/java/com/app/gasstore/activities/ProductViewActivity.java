@@ -122,4 +122,11 @@ public class ProductViewActivity extends BaseActivity {
         isSearch = getIntent().getBooleanExtra("isSearch", false);
 
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initList();
+        
+    }
 }
