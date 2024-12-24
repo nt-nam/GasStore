@@ -123,39 +123,45 @@
 
         <!-- Lựa chọn số kí -->
         <TextView
+            android:id="@+id/tvMass12"
             android:layout_width="80dp"
             android:layout_height="40dp"
             android:layout_marginEnd="8dp"
+            android:background="@drawable/cat_7_background"
             android:gravity="center"
-            android:background="@drawable/cat_2_background"
             android:text="12kg"
             android:textColor="@color/white"
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/tvMass24"
             android:layout_width="80dp"
             android:layout_height="40dp"
             android:layout_marginEnd="8dp"
+            android:background="@drawable/cat_7_background"
             android:gravity="center"
-            android:background="@drawable/cat_2_background"
             android:text="24kg"
             android:textColor="@color/white"
             android:textStyle="bold" />
+
         <TextView
+            android:id="@+id/tvMass45"
             android:layout_width="80dp"
             android:layout_height="40dp"
             android:layout_marginEnd="8dp"
+            android:background="@drawable/cat_7_background"
             android:gravity="center"
-            android:background="@drawable/cat_2_background"
             android:text="45kg"
             android:textColor="@color/white"
             android:textStyle="bold" />
+
         <TextView
+            android:id="@+id/tvMass70"
             android:layout_width="80dp"
             android:layout_height="40dp"
             android:layout_marginEnd="8dp"
+            android:background="@drawable/cat_7_background"
             android:gravity="center"
-            android:background="@drawable/cat_2_background"
             android:text="70kg"
             android:textColor="@color/white"
             android:textStyle="bold" />

@@ -90,7 +90,7 @@ public class ProductAddActivity extends BaseActivity {
 
                 Products p = new Products(
                         "default", false, name, name, priceValue, "default",
-                        quantityValue, description, color, "default", mass, origin,
+                        quantityValue, description, color, "default", Integer.parseInt(mass), origin,
                         "default", "default", 0, 0, 0
                 );
 

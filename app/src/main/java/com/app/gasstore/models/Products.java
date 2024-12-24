@@ -15,7 +15,7 @@ public class Products implements Serializable {
     private String description;//mô tả
     private String color;//màu
     private String size; //kích thước
-    private String mass; //khối lượng
+    private int mass; //khối lượng
     private String Origin;//xuất xứ
     private String supplier;//nhà cung cấp
     private String status;//trạng thái sản phẩm
@@ -115,11 +115,11 @@ public class Products implements Serializable {
         this.size = size;
     }
 
-    public String getMass() {
+    public int getMass() {
         return mass;
     }
 
-    public void setMass(String mass) {
+    public void setMass(int mass) {
         this.mass = mass;
     }
 
@@ -163,7 +163,7 @@ public class Products implements Serializable {
         this.quantitySold = quantitySold;
     }
 
-    public Products(String id, String name, String title, double price, String imagePath, int quantity, String description, String color, String size, String mass, String origin, String supplier, String status, double star, int view, int quantitySold) {
+    public Products(String id, String name, String title, double price, String imagePath, int quantity, String description, String color, String size, int mass, String origin, String supplier, String status, double star, int view, int quantitySold) {
         this.id = id;
         this.name = name;
         Title = title;
@@ -182,7 +182,7 @@ public class Products implements Serializable {
         this.quantitySold = quantitySold;
     }
 
-    public Products(String id, boolean bestProduct, String name, String title, double price, String imagePath, int quantity, String description, String color, String size, String mass, String origin, String supplier, String status, double star, int view, int quantitySold) {
+    public Products(String id, boolean bestProduct, String name, String title, double price, String imagePath, int quantity, String description, String color, String size, int mass, String origin, String supplier, String status, double star, int view, int quantitySold) {
         this.id = id;
         BestProduct = bestProduct;
         this.name = name;
