@@ -28,7 +28,7 @@ public class ProductViewActivity extends BaseActivity {
     private String categoryName;
     private String searchText;
     private boolean isSearch;
-    int optionsShow;
+    private int optionsShow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,21 +37,100 @@ public class ProductViewActivity extends BaseActivity {
         setContentView(binding.getRoot());
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getIntentExtra();
-        addControls();
         initList();
         addEvents();
     }
 
-    private void addControls() {
-        if (optionsShow == -1) {
+    private void initList() {
+        if (optionsShow == -1 ) {
             // Ẩn TextView
 //            binding.textView14.setVisibility(View.GONE);
             // Hiện TextView
             binding.textView14.setVisibility(View.VISIBLE);
+            initFullList();
             // Ẩn nhưng vẫn giữ không gian
 //            binding.textView14.setVisibility(View.INVISIBLE);
+        } else if (searchText.isEmpty()) {
+            initFullList();
+        } else if (optionsShow == 2) {
+            //search
+            // ẩn TextView dấu plus
+//            binding.textView14.setVisibility(View.GONE);
+            searchListProduct();
         }
 
+    }
+
+    private void searchListProduct() {
+        DatabaseReference myRef = database.getReference("Products");
+        binding.progressBar.setVisibility(View.VISIBLE);
+        ArrayList<Products> list = new ArrayList<>();
+        ArrayList<Products> fullList = new ArrayList<>(); // Danh sách đầy đủ
+        ArrayList<Products> filteredList = new ArrayList<>(); // Danh sách sau khi lọc
+
+//        Query query;
+//
+//        query = myRef.orderByChild("name")
+//                .startAt(searchText)
+//                .endAt(searchText + '\uf8ff');
+//
+//
+//        query.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                if (snapshot.exists()) {
+//                    for (DataSnapshot issue : snapshot.getChildren()) {
+//                        list.add(issue.getValue(Products.class));
+//                    }
+//                    if (list.size() > 0) {
+//                        binding.foodList.setLayoutManager(new GridLayoutManager(ProductViewActivity.this, 2, RecyclerView.VERTICAL, false));
+//                        adapterListProduct = new ProductListAdapter(list);
+//                        binding.foodList.setAdapter(adapterListProduct);
+//                    }
+//                    binding.progressBar.setVisibility(View.GONE);
+//                } else {
+//                    binding.progressBar.setVisibility(View.GONE);
+//                    Toast.makeText(ProductViewActivity.this, "Không tìm thấy kết quả!", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot issue : snapshot.getChildren()) {
+                        fullList.add(issue.getValue(Products.class));
+                    }
+
+                    // Thực hiện tìm kiếm không phân biệt chữ hoa/chữ thường
+                    String lowerCaseSearchText = searchText.toLowerCase();
+                    for (Products product : fullList) {
+                        if (product.getName() != null && product.getName().toLowerCase().contains(lowerCaseSearchText)) {
+                            filteredList.add(product);
+                        }
+                    }
+
+                    // Hiển thị kết quả
+                    if (filteredList.size() > 0) {
+                        binding.foodList.setLayoutManager(new GridLayoutManager(ProductViewActivity.this, 2, RecyclerView.VERTICAL, false));
+                        adapterListProduct = new ProductListAdapter(filteredList);
+                        binding.foodList.setAdapter(adapterListProduct);
+                    } else {
+                        Toast.makeText(ProductViewActivity.this, "Không tìm thấy kết quả!", Toast.LENGTH_SHORT).show();
+                    }
+
+                    binding.progressBar.setVisibility(View.GONE);
+                } else {
+                    binding.progressBar.setVisibility(View.GONE);
+                    Toast.makeText(ProductViewActivity.this, "Không có dữ liệu!", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                binding.progressBar.setVisibility(View.GONE);
+                Toast.makeText(ProductViewActivity.this, "Lỗi: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void addEvents() {
@@ -71,19 +150,10 @@ public class ProductViewActivity extends BaseActivity {
 
     }
 
-    private void initList() {
+    private void initFullList() {
         DatabaseReference myRef = database.getReference("Products");
         binding.progressBar.setVisibility(View.VISIBLE);
         ArrayList<Products> list = new ArrayList<>();
-
-        Query query;
-        if (isSearch) {
-            // Chuyển ký tự đầu thành chữ hoa
-            String normalizedSearchText = searchText.substring(0, 1).toUpperCase() + searchText.substring(1);
-            query = myRef.orderByChild("Name").startAt(normalizedSearchText).endAt(normalizedSearchText + '\uf8ff');
-        } else {
-            query = myRef.orderByChild("CategoryId").equalTo(categoryId);
-        }
 
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -93,9 +163,8 @@ public class ProductViewActivity extends BaseActivity {
                         list.add(issue.getValue(Products.class));
                     }
                     if (list.size() > 0) {
-                        binding.foodList.setLayoutManager(new GridLayoutManager(ProductViewActivity.this, 3, RecyclerView.VERTICAL, false));
+                        binding.foodList.setLayoutManager(new GridLayoutManager(ProductViewActivity.this, 2, RecyclerView.VERTICAL, false));
 //                        binding.foodList.setLayoutManager(new GridLayoutManager(ProductViewActivity.this, 1));
-
                         adapterListProduct = new ProductListAdapter(list);
                         binding.foodList.setAdapter(adapterListProduct);
                     }
@@ -118,6 +187,7 @@ public class ProductViewActivity extends BaseActivity {
         categoryId = getIntent().getIntExtra("categoryId", 0);
         optionsShow = getIntent().getIntExtra("optionsShow", 0);
         categoryName = getIntent().getStringExtra("categoryName");
+        searchText = "";
         searchText = getIntent().getStringExtra("searchText");
         isSearch = getIntent().getBooleanExtra("isSearch", false);
 
@@ -127,6 +197,6 @@ public class ProductViewActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         initList();
-        
+
     }
 }

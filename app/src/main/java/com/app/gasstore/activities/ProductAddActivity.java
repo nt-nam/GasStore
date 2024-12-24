@@ -19,7 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class ProductAddActivity extends BaseActivity {
-    DatabaseReference database ;
+    DatabaseReference databaseReference ;
     ActivityProductAddBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +94,7 @@ public class ProductAddActivity extends BaseActivity {
                         "default", "default", 0, 0, 0
                 );
 
-                database.child("Products").push().setValue(p)
+                databaseReference.child("Products").push().setValue(p)
                         .addOnCompleteListener(task -> {
                             if (task.isSuccessful()) {
                                 Toast.makeText(this, "Product added successfully!", Toast.LENGTH_SHORT).show();
@@ -114,7 +114,7 @@ public class ProductAddActivity extends BaseActivity {
     }
 
     private void init() {
-        database = FirebaseDatabase.getInstance().getReference();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
     }
 
 //    private void sendOrderToFirebase() {

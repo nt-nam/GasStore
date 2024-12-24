@@ -145,17 +145,26 @@ public class HomeActivity extends BaseActivity {
                 viewAllProduct();
             }
         });
-        binding.SettingBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, HomeDashboardActivity.class));
-            }
+        binding.SettingBtn.setOnClickListener(v -> {
+            startActivity(new Intent(HomeActivity.this, HomeDashboardActivity.class));
         });
+        binding.searchBtn.setOnClickListener(v -> {
+            findProducts();
+        });
+    }
+
+    private void findProducts() {
+        Intent intent = new Intent(this, ProductViewActivity.class);
+        intent.putExtra("optionsShow", 2);
+        String find = binding.searchEdt.getText().toString();
+        intent.putExtra("searchText",find);
+        startActivity(intent);
     }
 
     private void viewAllProduct() {
         Intent intent = new Intent(this, ProductViewActivity.class);
         intent.putExtra("optionsShow", 1);
+        intent.putExtra("searchText","");
         startActivity(intent);
     }
 
