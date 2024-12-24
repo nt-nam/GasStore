@@ -6,5 +6,220 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.ProductDetailActivity">
+    <!-- Back Button -->
+    <ImageView
+        android:id="@+id/backBtn"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_margin="16dp"
+        android:src="@drawable/arrow"
+        android:contentDescription="Back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+<!--    &lt;!&ndash; Menu Icon &ndash;&gt;-->
+<!--    <ImageView-->
+<!--        android:id="@+id/menuBtn"-->
+<!--        android:layout_width="24dp"-->
+<!--        android:layout_height="24dp"-->
+<!--        android:layout_margin="16dp"-->
+<!--        android:contentDescription="Menu"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!-- Product Image -->
+    <ImageView
+        android:id="@+id/productImage"
+        android:layout_width="0dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="24dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintTop_toBottomOf="@id/backBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Tên sản phẩm -->
+    <TextView
+        android:id="@+id/productName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tên sản phẩm"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textColor="#333333"
+        app:layout_constraintTop_toBottomOf="@id/productImage"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <!-- Giá sản phẩm -->
+    <TextView
+        android:id="@+id/productPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$123"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="#FFD700"
+        app:layout_constraintStart_toStartOf="@id/productName"
+        app:layout_constraintTop_toBottomOf="@id/productName"
+        android:layout_marginTop="4dp" />
+
+    <!-- Layout chứa icon ngôi sao và đánh giá -->
+    <LinearLayout
+        android:id="@+id/ratingLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/productName"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp">
+
+        <!-- Hình ngôi sao -->
+        <ImageView
+            android:id="@+id/starIcon"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/star"
+            android:contentDescription="Star Icon"
+            android:layout_gravity="center_vertical"/>
+
+        <!-- TextView hiển thị đánh giá -->
+        <TextView
+            android:id="@+id/productRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4.6"
+            android:textSize="14sp"
+            android:textColor="#000000"
+            android:layout_marginStart="4dp"
+            android:gravity="center_vertical"/>
+    </LinearLayout>
+
+
+    <!-- Số Kí -->
+    <TextView
+        android:id="@+id/weightTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Số kí"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/productPrice"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Các Button chọn số kg -->
+    <LinearLayout
+        android:id="@+id/weightOptions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/weightTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp">
+
+        <!-- Lựa chọn số kí -->
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:background="@drawable/cat_2_background"
+            android:text="12kg"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:background="@drawable/cat_2_background"
+            android:text="24kg"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:background="@drawable/cat_2_background"
+            android:text="45kg"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:background="@drawable/cat_2_background"
+            android:text="70kg"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Mô tả sản phẩm -->
+    <TextView
+        android:id="@+id/descriptionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mô tả"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/weightOptions"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp" />
+
+    <TextView
+        android:id="@+id/descriptionContent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        android:textSize="14sp"
+        android:textColor="#666666"
+        app:layout_constraintTop_toBottomOf="@id/descriptionTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
+
+    <!-- Nút thêm vào giỏ hàng -->
+    <LinearLayout
+        android:id="@+id/addToCartLayout"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="16dp">
+
+        <!-- Nút Thêm vào giỏ hàng -->
+        <Button
+            android:id="@+id/addToCartBtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="Thêm vào giỏ hàng"
+            android:textStyle="bold"
+            android:backgroundTint="#FD306B"
+            android:textColor="#FFFFFF"
+            android:layout_weight="1"/>
+
+        <!-- Giỏ hàng icon -->
+        <ImageView
+            android:id="@+id/cartBtn"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/grey_background"
+            android:padding="12dp"
+            app:srcCompat="@drawable/basket" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

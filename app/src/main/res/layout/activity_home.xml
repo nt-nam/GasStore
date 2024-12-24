@@ -235,6 +235,8 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/CategoryView"
+                    android:padding="8dp"
+                    android:clipToPadding="false"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
